@@ -1,0 +1,92 @@
+\documentclass[boxes, qed]{homework}
+\usepackage{amsmath}
+\name{Rohit Wason}
+\course{Math 560}
+\term{Spring 2021}
+\hwnum{(\#1)}
+
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+\newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}}
+
+\begin{document}
+
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+\newenvironment{augmatrix}[1]{%
+  \left[\begin{array}{#1}
+}{%
+  \end{array}\right]
+}
+
+\problemnumber{1}
+\begin{problem}
+  Canada has two official languages (French and English). 
+  The distribution of responses to the question: “What is your mother tongue?”
+  is provided.
+\end{problem}
+\begin{solution}
+  a) What probability should replace “?” in the distribution?\\
+  
+  Let the probability that a Canadian speaks English be represented by $P(E)=0.59$, 
+  French by $P(F)=?$, Asian/Pacific by $P(A)=0.07$ and Other by $P(O)=0.11$.\\
+
+  Since these are exhaustive (they complete the selection of languages spoken 
+  in Canada), $P(E)+P(F)+P(A)+P(O) = 1$. Therefore we have:
+  \begin{align*}
+    P(F) &= 1-(P(E)+P(A)+P(O))\\
+    &= 1-(0.59+0.07+0.11)\\
+    & = 1-0.77\\
+    & = \boxed{0.23}
+  \end{align*}
+
+  b) What is the probability that the mother tongue of a randomly 
+  selected Canadian is not English?\\
+
+  Let's call $P(E^{'})$ the probability that the mother tongue
+  is \textbf{not} English. Again, since the given probabilities 
+  are exclusive and exhaustive, the possibilities that a randomly
+  selected Canadian speaks a language other than English are same as
+  the possibilities that they speak French \textbf{or} that they
+  speak Asian/Pacific \textbf{or} they speak "Other". In other words:
+  \begin{align*}
+    P(E^{'}) &= P(F) + P(A) + P(O)\\
+    &= 0.23 + 0.07 + 0.11\\
+    &= \boxed{0.41}
+  \end{align*}
+\end{solution}
+\begin{problem}
+  Suppose that $45\%$ of adults in a study eat enough vegetables, 
+  $40\%$ eat enough fruit, and
+  $25\%$ do both.
+\end{problem}
+\begin{solution}
+  a) What is the probability that a randomly selected adult 
+  from this study eats enough vegetables or eats enough fruit?\\
+
+  Let $P(V) = 0.45$ be the probability that a randomly selected
+  adult eats enough vegetables; $P(F) = 0.40$ that they eat enough
+  fruit; and $P(V \cap F) = 0.25$ that they do both.\\
+
+  Let $P(V \cup {F})$ be the probability that a person eats
+  enough vegetables \textbf{or} enough fruit. This probability
+  would just be $P(V) + P(F)$ had these events been mutually exclusive.
+  But since $P(V \cap F) \ne 0$, we need to discount $P(V \cap F)$
+  so we don't count it again (this is also called \textbf{\textit{de Morgan's law}}):
+  \begin{equation}
+    P(A \cup B) = P(A) + P(B) - P(A \cap B)
+  \end{equation}
+  \begin{align*}
+    \therefore P(V \cup F) &= P(V) + P(F) - P(V \cap F)\\
+    &= 0.45 + 0.40 - 0.25\\
+    &= \boxed{0.60}
+  \end{align*}
+
+  b) If 3 adults are randomly selected from this study 
+  (independently of each other), what is the probability that
+  at least one of them eats enough vegetables?
+\end{solution}
+\end{document}
