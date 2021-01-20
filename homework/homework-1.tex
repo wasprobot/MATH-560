@@ -87,6 +87,21 @@
 
   b) If 3 adults are randomly selected from this study 
   (independently of each other), what is the probability that
-  at least one of them eats enough vegetables?
+  at least one of them eats enough vegetables?\\
+
+  Starting in the opposite direction,
+  we can see that the probability that a randomly selected
+  person does \textbf{not} eat enough vegetables,
+  $$P(V{'}) = 1 - P(V) = 0.55$$
+
+  Since the events of selecting the 3 persons are independent
+  of each other (selecting one person doesn't affect which 
+  subsequent person gets picked), the probability that
+  \textbf{none of the 3 persons eat enough vegetables} is given by
+  $$P(V{'})^3 = 0.55^3$$
+
+  Therefore, the required probability that \textbf{at lease one} of these
+  persons eats enough vegetables is the compliment of what we found above:
+  $$=(1-0.55^3) = 0.8336$$
 \end{solution}
 \end{document}
