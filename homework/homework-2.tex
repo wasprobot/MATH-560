@@ -76,22 +76,21 @@
   \end{lstlisting}
   (c) Write an R command to add a 3 point curve to the vector of exam grades.
   \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
-    initials[quiz.grades>=18 & exam.grades>=60]
+    exam.grades = exam.grades + 3
   \end{lstlisting}
 \end{solution}
 \begin{problem}Consider two tosses of a fair coin.
 \end{problem}
 \begin{solution}
-  (a) Let $X$ be the number of heads minus the number of tails in the two tosses. 
-  
   The possible events are:
   \begin{tabular}{|l|l|l|l|}
     \hline
     HH & HT & TH & TT \\
     \hline
   \end{tabular}\\
-  
-  Therefore the probability distribution of $X$ is:\\
+
+  (a) Let $X$ be the number of heads minus the number of tails in the two tosses.
+  The probability distribution of $X$ is:\\
 
   \begin{tabular}{|l|l|l|l|}
     \hline
@@ -103,16 +102,8 @@
 
   (b)  Let $Y$ be the number of heads before the 
   first time tails occurs. (If tails does not occur in the
-  two tosses, then $Y = 2$.)\\
-
-  The possible events are:  
-  \begin{tabular}{|l|l|l|l|}
-    \hline
-    HH & HT & TH & TT \\
-    \hline
-  \end{tabular}\\  
-
-  Therefore the probability distribution of $Y$ is:\\
+  two tosses, then $Y = 2$).
+  The probability distribution of $Y$ is:\\
 
   \begin{tabular}{|l|l|l|l|}
     \hline
