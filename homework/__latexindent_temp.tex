@@ -1,9 +1,11 @@
 \documentclass[boxes, qed]{homework}
+\usepackage{xcolor}
 \usepackage{amsmath}
+\usepackage{listings}
 \name{Rohit Wason}
 \course{Math 560}
 \term{Spring 2021}
-\hwnum{(\#1)}
+\hwnum{(\#2)}
 
 \newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
 \newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}}
@@ -22,51 +24,37 @@
   \end{array}\right]
 }
 
-\problemnumber{1}
-\begin{problem}
-  Canada has two official languages (French and English). Here is the distribution of responses
-  to the question: “What is your mother tongue?”\end{problem}
+\begin{problem}Let $x_i=(i - 21)/10$ for $i = 1,\dots, 41$.
+  This creates an equally-spaced grid of values between
+  $-2$ and $2$ with increments of $1/10$.
+\end{problem}
 \begin{solution}
-    \textbf{\textit{To prove:}} In other words we need to prove that the equation
-    $3a + 5b = c$
-    has positive solutions for all $c \ge 8$.\\
-
-    \textbf{\textit{Basis step:}} Let $P(c)$ be the statement that the last statement is true for
-    a given $c$. $P(8)$ holds true, since $a=1, b=1$ 
-    are the positive solutions.\\
-
-    \textbf{\textit{Induction step:}} Let's assume $P(k)$ holds for an arbitrary
-    $k>8$. I.e., 
-    $\exists a,b
-    : a\ge{0},b\ge{0}
-    : k=3a+5b$
-
-    \begin{enumerate}
-        \item[Case I] Both $a$ and $b$ are greater than zero.
-        \begin{align*}
-            \therefore k+1 &= 3a + 5b + 1 \\
-            & = 3a + 5(b-1) + 6 \\
-            & = 3(a+2) + 5(b-1)
-        \end{align*}
-        \item[Case II] $a=0$ and $b$ is greater than zero.
-        \begin{align*}
-            \therefore k+1 &= 5b + 1 \\
-            & = 5(b-1) + 6 \\
-            & = 3(2) + 5(b-1)
-        \end{align*}
-        \item[Case III] $a$ is greater than zero and $b=0$. 
-        But this is only possible if
-        $a\ge{3}$ since $k\ge{8}$.
-        \begin{align*}
-            \therefore k+1 &= 3a + 1 \\
-            & = 3(a-3) + 1 \\
-            & = 3(a-3) + 10\\
-            & = 3(a-3) + 5(2)\\
-        \end{align*}
-    \end{enumerate}
-    All the possible casese suggest that if $P(k)$ is true,
-    $P(k+1)$ is true $\forall{k}\ge{8}\in{\mathbb{N}}$.
-    I.e., any integer length $\ge{8}$ can be made out of
-    these pipes.
+  (a) Write an R command to create a vector $x$ with 
+  elements $x_1, . . . , x_{41}$.
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
+    x <- ((1:41)-21)/10
+  \end{lstlisting}
+  > x
+  [1] -2.0 -1.9 -1.8 -1.7 -1.6 -1.5 -1.4 -1.3 -1.2 -1.1 -1.0 -0.9 -0.8 -0.7 -0.6 -0.5 -0.4 -0.3 -0.2 -0.1  0.0  0.1  0.2  0.3  0.4  0.5  0.6  0.7  0.8  0.9  1.0  1.1  1.2  1.3  1.4  1.5  1.6
+  [38]  1.7  1.8  1.9  2.0
+  > 
+  (b) Let $u_i = \frac{1}{\sqrt{2\pi}}e^{-x_i/2}$
+  for $i = 1, . . . , 41$. Write an R command to create a vector u with elements
+  $u_1, . . . u_{41}$.
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},
+    language = R,
+    xleftmargin = 2cm,
+    framexleftmargin = 1em]
+    u <- exp(-(1:41)/2)/sqrt(2*pi)
+  \end{lstlisting}
+  (c) Write an R command to give the elements of $x$
+  corresponding to values of $u_i$ which are greater
+  than $\frac{1}{4}$.
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},
+    language = R,
+    xleftmargin = 2cm,
+    framexleftmargin = 1em]
+    u <- exp(-(1:41)/2)/sqrt(2*pi)
+  \end{lstlisting}
 \end{solution}
 \end{document}

@@ -1,0 +1,125 @@
+\documentclass[boxes, qed]{homework}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{listings}
+\name{Rohit Wason}
+\course{Math 560}
+\term{Spring 2021}
+\hwnum{(\#2)}
+
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+\newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}}
+
+\begin{document}
+
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+\newenvironment{augmatrix}[1]{%
+  \left[\begin{array}{#1}
+}{%
+  \end{array}\right]
+}
+
+\begin{problem}Let $x_i=(i - 21)/10$ for $i = 1,\dots, 41$.
+  This creates an equally-spaced grid of values between
+  $-2$ and $2$ with increments of $1/10$.
+\end{problem}
+\begin{solution}
+  (a) Write an R command to create a vector $x$ with 
+  elements $x_1, . . . , x_{41}$.
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
+    x <- ((1:41)-21)/10
+  \end{lstlisting}
+
+  (b) Let $u_i = \frac{1}{\sqrt{2\pi}}e^{-x_i/2}$
+  for $i = 1, . . . , 41$. Write an R command to create a vector u with elements
+  $u_1, . . . u_{41}$.
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
+    u <- exp(-(1:41)/2)/sqrt(2*pi)
+  \end{lstlisting}
+
+  (c) Write an R command to give the elements of $x$
+  corresponding to values of $u_i$ which are greater
+  than $\frac{1}{4}$.
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
+    x[u > 0.25]
+  \end{lstlisting}
+  PS: There no values in $u$ that are greater than $\frac{1}{4}$.
+\end{solution}
+\begin{problem} Type the following 3 command in R:
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
+    initials=c("GZ","VA","TK","BH","LM","EY")
+    quiz.grades=c(28,15,21,30,24,10)
+    exam.grades=c(86,72,50,97,90,55)
+  \end{lstlisting}
+  The $i^{th}$ component of each vector gives the value of the respective 
+  variable for the $i^{th}$ person in a class.
+\end{problem}
+\begin{solution}
+  (a) The maximum possible number of points on the quiz is $30$. Write an R command to convert
+  the vector of quiz grades to a vector of percentages. 
+  (For example, a quiz grade of 27 should be converted to $90\%$.)
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
+    quiz.grades*(100/30)
+  \end{lstlisting}
+  (b) Students who scored at least $18$ passed the quiz. 
+  Students who scored at least $60$ passed the
+  exam. Write an R command to give the initials of 
+  all students who both passed the quiz and passed the
+  exam.
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
+    initials[quiz.grades>=18 & exam.grades>=60]
+  \end{lstlisting}
+  (c) Write an R command to add a 3 point curve to the vector of exam grades.
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
+    initials[quiz.grades>=18 & exam.grades>=60]
+  \end{lstlisting}
+\end{solution}
+\begin{problem}Consider two tosses of a fair coin.
+\end{problem}
+\begin{solution}
+  (a) Let $X$ be the number of heads minus the number of tails in the two tosses. 
+  
+  The possible events are:
+  \begin{tabular}{|l|l|l|l|}
+    \hline
+    HH & HT & TH & TT \\
+    \hline
+  \end{tabular}\\
+  
+  Therefore the probability distribution of $X$ is:\\
+
+  \begin{tabular}{|l|l|l|l|}
+    \hline
+    \textbf{Value (X)} & 2 & 0 & -2 \\
+    \hline
+    \textbf{Probability} & 0.25 & 0.5 & 0.25 \\
+    \hline
+  \end{tabular}\\
+
+  (b)  Let $Y$ be the number of heads before the 
+  first time tails occurs. (If tails does not occur in the
+  two tosses, then $Y = 2$.)\\
+
+  The possible events are:  
+  \begin{tabular}{|l|l|l|l|}
+    \hline
+    HH & HT & TH & TT \\
+    \hline
+  \end{tabular}\\  
+
+  Therefore the probability distribution of $Y$ is:\\
+
+  \begin{tabular}{|l|l|l|l|}
+    \hline
+    \textbf{Value (Y)} & 2 & 1 & 0 \\
+    \hline
+    \textbf{Probability} & 0.25 & 0.25 & 0.5 \\
+    \hline
+  \end{tabular}
+\end{solution}
+\end{document}
