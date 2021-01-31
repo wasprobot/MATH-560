@@ -1,0 +1,157 @@
+\documentclass[boxes, qed]{homework}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{listings}
+\name{Rohit Wason}
+\course{Math 560}
+\term{Spring 2021}
+\hwnum{(\#3)}
+
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+\newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}}
+
+\begin{document}
+
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+\newenvironment{augmatrix}[1]{%
+  \left[\begin{array}{#1}
+}{%
+  \end{array}\right]
+}
+
+\begin{problem}Using the given probability distribution of $X$.
+\end{problem}
+\begin{solution}(a) $P(2 < X < 3)$
+  \begin{align*}
+    &= \int_{2}^{3}{\frac{2}{x^3}}dx\\
+    &= 2\int_{2}^{3}{x^{-3}}dx\\
+    &= -\left[ x^{-2} \right]_{2}^{3}\\
+    &= -\left[ 3^{-2} - 2^{-2} \right]\\
+    &\approx \boxed{0.12975}
+  \end{align*}
+
+  (b) $P(X < 2 \lor X > 3)$ can be seen as the probability
+    of all events for $X>1$, excluding $P(2 < X < 3)$ (from above)
+    and hence $= P(X > 1) - P(2 < X < 3)$.
+    Since $P(X > 1)=1$, being the probability of all exhaustive cases
+
+    $$P(X < 2 \lor X > 3) = 1-0.12975 = \boxed{0.87025}$$\\
+
+  (c) $P(X < 2)$
+  \begin{align*}
+    &= \int_{-\infty}^{2}{\frac{2}{x^3}}dx\\
+    &= \int_{-\infty}^{1}{\frac{2}{x^3}}dx + \int_{1}^{2}{\frac{2}{x^3}}dx\\
+    &= 0 -\left[ x^{-2} \right]_{1}^{2}\\
+    &= \left[ 1-\frac{1}{\sqrt{2}} \right]\\
+    &\approx \boxed{0.29289}
+  \end{align*}
+\end{solution}
+
+\begin{problem}The scores on a particular exam follow a $Normal(74, 8)$ distribution.
+  On ``standardizing'' this variable we get
+  $Z=\frac{X-\mu}{\sigma}$.
+\end{problem}
+\begin{solution}(a) Therefore the probability that a randomly selected student 
+  has an exam score less than $80 = P(X<80) = P(Z<\frac{80-74}{8})$\\
+  $=P(Z<0.75) = \boxed{0.7734}$ (using the \textit{Standard Normal Cumulative Probabilities}).\\
+
+  (b) The probability that a randomly selected student 
+  has an exam score between 80 and 90
+  $=P(80 < X < 90) = P(0.75 < Z < \frac{90-74}{8})$ like above.
+  This is $=P(0.75 < Z < 2) = P(Z < 2) - P(Z < 0.75)$.\\
+  Using the \textit{Standard Normal Cumulative Probabilities} we see that
+  $P(Z < 0.75) = 0.7734$ and $P(Z < 2) = 0.9772$. Therefore
+  $P(0.75 < Z < 2) = 0.9772 - 0.7734 = \boxed{0.2038}$\\
+
+  (c) To find a value $x$ such that the probability that 
+  a randomly selected student has an exam
+  score less than $x$ is $0.90$ we reverse lookup
+  the \textit{Standard Normal Cumulative Probabilities}
+  for cummulative probablities close to $0.90$ and see that\\
+
+  $P(Z<1.28) = 0.8997$ and $P(Z<1.29) = 0.9015$.
+  From the definition, $X=Z\sigma + \mu$. Therefore
+  $1.28(8)+74<x<1.29(8)+74$. Or
+  $$84.24<x<84.32$$
+\end{solution}
+
+\begin{problem}The distributions of nonword- and word-errors are given. 
+  The total number of words written are $500$. Also, the 
+  the correlation between the number of nonword errors and the number 
+  of word errors is $0.55$.\\
+  Let $X$ be the number of word-, and $Y$
+  the number of nonword-errors.
+\end{problem}
+\begin{solution}(a) The mean number of word-errors,
+  $$\mu_X = \sum_{i=1}^{4}{x_ip_i}$$
+  Using the given distribution, we have
+  $$\mu_X = 0(0.2) + 1(0.4) + 2(0.3) + 3(0.1) = 1.3$$
+  
+  Similarly,
+  $$\mu_Y = \sum_{i=1}^{3}{y_ip_i}$$
+  since we only have 3 distinct values
+  in the sequence. Again using the given distribution, we have
+  $$\mu_Y = 0(0.6) + 1(0.3) + 2(0.1) = 0.5$$
+  
+  The mean of the total number of errors 
+  (nonword errors plus word errors) is the sum
+  of both the means: $\mu_{X+Y} = \mu_X + \mu_Y$
+  $$=1.3+0.5 = \boxed{1.8}$$
+
+  (b) To find the standard deviation, we first calculate
+  the variance of each variable:
+  \begin{align*}
+    \sigma_{X}^2 &= \sum_{i=1}^4{(x_i-\mu_X)^2p_i}\\
+    &= (0-1.3)^2(0.2)
+      + (1-1.3)^2(0.4)
+      + (2-1.3)^2(0.3)
+      + (3-1.3)^2(0.1)\\
+    &= 0.81
+  \end{align*}
+  Similarly
+  \begin{align*}
+    \sigma_{Y}^2 &= \sum_{i=1}^3{(y_i-\mu_Y)^2p_i}\\
+    &= (0-0.5)^2(0.6)
+      + (1-0.6)^2(0.3)
+      + (2-0.6)^2(0.1)\\
+    &= 0.394
+  \end{align*}
+  Now since $X$ and $Y$ have a correlation
+  $\rho=0.55$ we have that the combined variance
+  \begin{align*}
+    \sigma_{X+Y}^2 
+      &= \sigma_X^2 + \sigma_Y^2 + 2\rho\sigma_X\sigma_Y\\
+      &= 0.81 + 0.394 + (0.55)\sqrt{0.81}\sqrt{0.394}\\
+      &\boxed{\approx 1.5147}
+  \end{align*}
+\end{solution}
+\begin{problem}Suppose that 70\% of homeowners in a town have a dog
+  (let's call this event, $D$), 
+  35\% have an alarm system (event $A$), and
+  20\% have both a dog and an alarm system ($A\cap{D}$).
+\end{problem}
+\begin{solution}(a) According to \textit{de Morgan's Rule},
+  the probability that a randomly selected homeowner 
+  from this town has either a dog or an alarm system
+  \begin{align*}
+    P(A\cup{D})
+      &= P(A) + P(D) - P(A\cap{D})\\
+      &= 0.70 + 0.35 - 0.20\\
+      &= \boxed{0.85}
+  \end{align*}
+
+  (b) The probability that a randomly selected homeowner 
+  from this town has an alarm system given that the homeowner has a dog
+  is given by
+  \begin{align*}
+    P(A|D) &= \frac{P(A\cap{D})}{P(D)}\\
+    &= \frac{0.20}{0.70}\\
+    &= 0.28
+  \end{align*}
+\end{solution}
+\end{document}
