@@ -43,27 +43,46 @@
   \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
     nrow(population[population$TOTINCH>100000,])/
       nrow(population)
-    \end{lstlisting}
-    $\boxed{p=\frac{57}{512}\approx{0.11}}$\\
+  \end{lstlisting}
+  $\boxed{p=\frac{114}{1024}\approx{0.1113}}$\\
 
   (b) If $100$ households are selected at random with replacement from this population, what is the
-  probability that \underline{at least $10$} of the households in the sample will have a total household income greater
+  probability that at least $10$ of the households in the sample will have a total household income greater
   than $100,000$? Compute the exact answer, rounded to at least 4 decimal places.\\
-  
-  $X$, the random variable denoting the number of households among $n=100$, 
-  whose income is greater than $100,000$ follows $\approx B(n,p) = B(100,0.11)$ from above.
-  According to CLT, this also $\approx N(np,\sqrt{np(1-p)}) 
-    =N(11,\sqrt{11(0.89)})
-    =N(11,3.129)$\\
 
-  The required probability, $P(X\ge{10})$ can be re-written as
-  $$P(\frac{X-11}{3.129}\ge{\frac{10-11}{3.129}})$$
-  For $Z=\frac{X-11}{3.129}$, this is
+  Adding all probabilities from $X=10, 11, \dots, 100$ in $R$
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
+    prob=0; 
+    for (n in c(10:100)) 
+      prob = prob + dbinom(n, size=100, prob=0.1113); 
+    prob;
+  \end{lstlisting}
+  we get $\boxed{P(X\ge{10}) = 0.6868}$\\
+
+  (c) If $100$ households are selected at random with replacement from this population, then let $X$ be
+  the number of households in the sample with income above $100,000$. What is the mean and the standard
+  deviation of the sampling distribution of $X$?\\
+
+  $X$ follows $\approx B(n,p) = B(100,0.11)$ from above.
+  According to CLT, this also $\approx N(np,\sqrt{np(1-p)}) 
+    =N(11.13,\sqrt{11.13(0.8887)})
+    =N(11.13,3.1450)$\\
+
+  Or $\mu=11.13, \sigma=3.1450$\\
+  
+  (d) Use the central limit theorem with a continuity correction to approximate the probability
+  computed in part (b)\\
+  
+  Using $\mu=11.13, \sigma=3.1450$ from (c),
+  for $Z=\frac{X-11.13}{3.1450}$, the required probability,
   \begin{align*}
-    &= P(Z\ge\frac{-1}{3.129}=-0.32)\\
-    &= 1-P(Z<-0.32)\\
-    &= 1-0.3745\\
-    &= \boxed{0.6255}
+    P(X\ge{10})\\
+    &= P(\frac{X-11.13}{3.1450}\ge{\frac{10-11.13}{3.1450}})\\
+    &= P(Z\ge\frac{-1.13}{3.1450}=-0.3593)\\
+    &= 1-P(Z<-0.3593)\\
+    &= 1-0.3632\\
+    &= \boxed{0.6368}
   \end{align*}
+
 \end{solution}
 \end{document}
