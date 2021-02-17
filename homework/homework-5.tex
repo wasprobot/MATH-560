@@ -24,9 +24,49 @@
   \end{array}\right]
 }
 
-\begin{problem}
+\begin{problem}The probability distribution of a random variable
+  $X$ is given, and $X_1$ and $X_2$ are random samples of size $2$.
+  Assuming $X_1$ and $X_2$ are independent:
 \end{problem}
-\begin{solution}
+\begin{solution}a) Since the variables are independent,
+  the $9$ possible pairs $(X_1,X_2)$ and their probabilities are:
+  \begin{enumerate}
+    \item $P(0,0)=P(X_1=0 \land X_2=0)=P(X_1=0)P(X_2=0)=0.6^2=0.36$
+    \item Similarly $P(0,1)=0.6*0.3=0.18$
+    \item $P(0,2)=0.6*0.1=0.06$
+    \item $P(1,0)=P(0,1)=0.18$
+    \item $P(1,1)=0.3^2=0.09$
+    \item $P(1,2)=0.3*0.1=0.03$
+    \item $P(2,0)=P(0,2)=0.06$
+    \item $P(2,1)=P(1,2)=0.03$, and
+    \item $P(2,2)=0.1^2=0.01$\\
+  \end{enumerate}
+
+  b) As for the random variable $Y=\frac{X_1+X_2}{2}$
+  the different possible values are:\\
+  
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    $Y$ & 0 & 1 & 2 \\
+    \hline
+    0 & 0 & 0.5 & 1 \\
+    \hline
+    1 & 0.5 & 1 & 1.5 \\
+    \hline
+    2 & 1 & 1.5 & 2 \\
+    \hline
+  \end{tabular}\\
+
+  Therefore the distribution for $Y$, obtained by adding the
+  $(X_1,X_2)$ probabilities from above, is:\\
+  
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    $Y$ & 0 & 0.5 & 1 & 1.5 & 2\\
+    \hline
+    $P(Y)$ & $0.36$ & $0.36$ & $0.21$ & $0.06$ & $0.01$\\
+    \hline
+  \end{tabular}
 \end{solution}
 
 \begin{problem}Population data on StatVillage (a hypothetical 128-block village in Canada) is given in
@@ -34,17 +74,18 @@
   information about the variables included in the file is given in the file \texttt{codesForStatVillage.txt}. 
   Use \texttt{R} or other computer software to answer the following questions:
   \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
-    population = read.table(file ="StatVillage.txt", 
-      header = TRUE)
+  population = read.table(file ="StatVillage.txt", 
+    header = TRUE)
   \end{lstlisting}
 \end{problem}
 \begin{solution}(a) The variable labeled \texttt{TOTINCH} gives the total household income. Determine the proportion of
   households in this population with a total household income greater than $100,000$.
   \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
-    nrow(population[population$TOTINCH>100000,])/
-      nrow(population)
+  > nrow( population [ population$TOTINCH>100000 ,])
+    /nrow( population )
+  [1] 0.1113281
   \end{lstlisting}
-  $\boxed{p=\frac{114}{1024}\approx{0.1113}}$\\
+  $\therefore \boxed{p\approx{0.1113}}$\\
 
   (b) If $100$ households are selected at random with replacement from this population, what is the
   probability that at least $10$ of the households in the sample will have a total household income greater
@@ -68,21 +109,77 @@
     =N(11.13,\sqrt{11.13(0.8887)})
     =N(11.13,3.1450)$\\
 
-  Or $\mu=11.13, \sigma=3.1450$\\
+  Or $\boxed{\mu=11.13, \sigma=3.1450}$\\
   
   (d) Use the central limit theorem with a continuity correction to approximate the probability
-  computed in part (b)\\
+  computed in part (b).\\
   
-  Using $\mu=11.13, \sigma=3.1450$ from (c),
+  We need to approximate $P(X\ge{10})$ which, with continuity correction
+  really is $P(X\ge{9.5})$ since each bar in the histogram is centered
+  on an integer and actually spans from the $\frac{1}{2}$
+  or the preceeding integer.\\
+
+  Using $\mu=11.13, \sigma=3.1450$ from above,
   for $Z=\frac{X-11.13}{3.1450}$, the required probability,
   \begin{align*}
-    P(X\ge{10})\\
-    &= P(\frac{X-11.13}{3.1450}\ge{\frac{10-11.13}{3.1450}})\\
-    &= P(Z\ge\frac{-1.13}{3.1450}=-0.3593)\\
-    &= 1-P(Z<-0.3593)\\
-    &= 1-0.3632\\
-    &= \boxed{0.6368}
+    P(X\ge{9.5})
+    &= P(\frac{X-11.13}{3.1450}\ge{\frac{9.5-11.13}{3.1450}})\\
+    &= P(Z\ge\frac{-1.63}{3.1450}=-0.5183)\\
+    &\approx 1-P(Z<-0.52)\\
+    &= 1-0.3015\\
+    &= \boxed{0.6985}
   \end{align*}
+\end{solution}
 
+\begin{problem}Your friend generated 5 observations from a normal distribution using a random number
+  generator in R. Your friend remembers that the standard deviation was $\sigma=2$ but forgets 
+  what was used for the mean $\mu$. Your friend generated and summarized the data using the following commands:
+  \begin{lstlisting}[backgroundcolor = \color{lightgray},language = R]
+  > set.seed(62341)
+  > mu=####
+  > sigma=2
+  > x=rnorm(5,mean=mu,sd=sigma)
+  > x
+  [1] 8.742144 10.503939 7.301674 6.524349 8.542242
+  > mean(x)
+  [1] 8.32287
+  > sd(x)
+  [1] 1.521389
+  \end{lstlisting}
+\end{problem}
+\begin{solution}
+  Given:\\
+  $n=5$\\
+  $\mu_{\bar{X}}=8.32287$\\
+  $\sigma_{\bar{X}}=1.521389$\\
+  $\sigma=2$\\
+
+  (a) The probability for producing the interval, $C=0.90$\\
+  Looking up the Normal distribution table
+  for $0.90+\frac{1-0.90}{2}=0.95$, we get
+  $C=0.90 \implies z^*=1.645$\\
+  Margin of error, $(z^*\sigma/\sqrt{n}) = 1.645(2)/\sqrt{5} = 1.4713$\\
+
+  $\therefore$ the 90\% two-sided confidence interval for $\mu$, 
+  $(\mu_{\bar{X}}\pm{1.4713})=\boxed{8.32287\pm{1.4713}}$\\
+
+  (b) The probability for producing the interval, $C=0.995$\\
+  Looking up the Normal distribution table
+  for $0.995+\frac{1-0.995}{2}=0.9975$, we get
+  $C=0.995 \implies z^*=2.81$\\
+  Margin of error $= 2.81(2)/\sqrt{5} = 2.5133$\\
+
+  $\therefore$ the 99.5\% two-sided confidence interval for $\mu$
+  $=\boxed{8.32287\pm{2.5133}}$\\
+
+  (c) By increasing the confidence level from $90\%$ to $99.5\%$, 
+  we saw that the interval for estimating $\mu$ expanded. It seems
+  that a 90\% confidence interval is a range of values that we can be 90\% 
+  certain contains the true mean of the population. As the confidence level
+  shrinks, we are less and less confident that the population mean
+  could lie in the interval.\\
+
+  It's easy to see that the two-sided 100\% confidence interval
+  is the whole normal distribution ($\mu$ must lie somewhere on the graph!).
 \end{solution}
 \end{document}
