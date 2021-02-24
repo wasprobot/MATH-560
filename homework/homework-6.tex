@@ -5,7 +5,7 @@
 \name{Rohit Wason}
 \course{Math 560}
 \term{Spring 2021}
-\hwnum{(\#6, Binomial)}
+\hwnum{(\#6, Test of significance)}
 
 \newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
 \newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}}
@@ -37,7 +37,7 @@
   So we have that
   \begin{align*}
     n &\ge (\frac{1.96\times{0.01}}{0.003})^2\\
-    n &\ge 42.69\\
+    n &\ge 42.69
   \end{align*}
   Thus we see that $n$ needs to be \textbf{at least} $\boxed{43}$.\\
   
@@ -47,10 +47,14 @@
   Again, using the inequality above, 
   \begin{align*}
     20 &\ge (\frac{0.01z^*}{0.003})^2
-    = \frac{0.0001{z^*}^2}{0.000009}\\
-    {z^*}^2 &\le 0.18\\
-    \therefore z^* &\le 0.4243  \\
+    = 11.11{z^*}^2\\
+    {z^*}^2 &\le 1.8\\
+    \therefore z^* &\le 1.341
   \end{align*}
+
+  For $z^*<0$ we are to use the area to the left of this point on the Normal curve.
+  On looking up $z^*=1.341$ in the \textit{Normal table}, we find P-Value $=90.99\%$
+  which is the desired confidence level.
 \end{solution}
 
 \begin{problem} A population follows a Normal distribution with mean $\mu$ and standard deviation $\sigma=3$.
@@ -82,7 +86,7 @@
   Your friend thinks that the value used for $\mu$ might have been $\mu_0=10$. 
   Is there strong evidence against this hypothesis? To answer this question, perform a test of significance 
   at level $\alpha=.05$. Carefully state the hypotheses, calculate an appropriate test statistic, 
-  compute the P-value, and state your conclusion.\\
+  compute the P-value, and state your conclusion.
 \end{problem}
 \begin{solution}
   So the hypothesis $H_0$ states that the mean is $\mu_0=10$
@@ -92,12 +96,16 @@
   the likelihood of $\mu$ being close to $\mu_0$. This statistic
   is given by:
   \begin{align*}
-    z=\frac{\bar{x}-\mu_o}{\sigma/\sqrt{n}}
-    = \frac{8.3228-10}{2/\sqrt{5}}
-    = \frac{-1.6772}{4.4721}
-    \approx -0.3750
+    z&=\frac{\bar{x}-\mu_o}{\sigma/\sqrt{n}}\\
+    &= \frac{8.3228-10}{2/\sqrt{5}}\\
+    &\approx -1.8751
   \end{align*}
-  $$
-  
+
+  To find the P-Value for this statistic, we lookup $-1.8751$
+  in the \textit{Normal table}, and since this value is to the left of $0$,
+  the Normal mean, we're looking for the area to the left of $-1.8751$.\\
+
+  P-Value $\approx 0.0307$. This value is smaller than our confidence-level
+  $\alpha=0.05$, hence our friend's hypothesis $\mu_0=10$ must be \textbf{rejected}!
 \end{solution}
 \end{document}
