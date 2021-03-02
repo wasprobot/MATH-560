@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+
+\newtheorem*{conjecture}{Conjecture}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{definition}{Definition}
+\newtheorem*{lemma}{Lemma}
+
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+\newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+\begin{document}
+
+\begin{definition}[3.5.1] A sequence of real numbers, $X=(x_n)$ is said to be a \textbf{Cauchy sequence}
+  if for every $\epsilon>0$ there exists as natural number $H(\epsilon)$ such that for all natural
+  numbers $n,m\ge{H(\epsilon)}$, the terms $x_n,x_m$ satisfy $\abs{x_n-x_m}<\epsilon$.
+\end{definition}
+\end{document}

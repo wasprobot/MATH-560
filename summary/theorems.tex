@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[shortlabels]{enumitem}
+
+\newtheorem*{conjecture}{Conjecture}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{definition}{Definition}
+\newtheorem*{lemma}{Lemma}
+
+\newcommand{\bigzero}{\mbox{\normalfont\Large\bfseries 0}}
+\newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+\begin{document}
+
+\begin{definition} Mean of the distribution of a discrete random variable 
+  $$\mu_X=\sum_{i=1}^K{x_ip_i}$$
+\end{definition}
+
+\begin{definition} Variance of the distribution of a discrete random variable 
+  $$\sigma_X^2=\sum_{i=1}^K{(x_i-\mu_X)^2p_i}$$
+\end{definition}
+
+\begin{definition} For the sample of size $n$, picked from
+  a Normally distributed $N(\mu,\sigma)$ population,
+  $$\mu_{\bar{x}}=\mu$$
+  $$\sigma_{\bar{x}}^2=\sigma^2/n$$
+\end{definition}
+
+\begin{definition} To ``standardize'' a variable, $X$ from $N(\mu,\sigma)$, define
+  $$P(X<p)=P(Z:=\frac{X-\mu}{\sigma})<\frac{p-\mu}{\sigma})$$
+\end{definition}
+
+\begin{definition} For Binomial distribution
+  $$\mu_X=np$$
+  $$\sigma_X^2=np(1-p)$$
+\end{definition}
+\end{document}
