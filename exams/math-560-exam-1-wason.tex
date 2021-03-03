@@ -1,0 +1,173 @@
+\documentclass{article}
+\usepackage{amsthm,amssymb,amsmath}
+\usepackage[shortlabels]{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\author{Rohit Wason}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution*}{Solution}
+\renewcommand{\theenumi}{\alph{enumi}\)}
+
+\title{MATH 560 - Exam 1}
+\date{3/3/2021}
+
+\begin{document}
+\maketitle
+ 
+\begin{problem}
+\end{problem}
+\begin{solution*}
+  \begin{enumerate}[(a)]
+    \item Since the given values of $E$, are exhaustive, 
+    the probability that a randomly selected elite typist makes exactly one error in a
+    written report
+    \begin{align*}
+      &=P(E=1) = 1-(P(E=0)+P(E=2))\\
+      &=1-(0.63+0.12)\\
+      &=\boxed{0.25}
+    \end{align*}
+
+    \item The mean of the distribution of $E$ is given by
+    \begin{align*}
+      \mu_E &= \sum{e_ip_i}\\
+      &= 0(0.63)+1(0.25)+2(0.12)\\
+      &= \boxed{0.49}
+    \end{align*}
+
+    \item For the standard deviation
+    \begin{align*}
+      \sigma_E^2 &= \sum{e_i^2p_i} - \mu_E^2\\
+      &= 0^2(0.63)+1^2(0.25)+2^2(0.12) - 0.49^2\\
+      &= \boxed{0.4899}
+    \end{align*}
+    Therefore $\sigma_E\approx{0.6999}$
+
+    \item To get the probability that at least one of three S.R.S has two errors
+    we observe that the probability that a randomly selected person does not have $2$ errors is
+    $P(2')=P(0)+P(1)=0.88$.\\
+
+    Since the events of selecting the 3 persons are independent of each other
+    (selecting one person doesn’t affect which subsequent person gets picked), the
+    required probability is $P(2')^3\approx{\boxed{0.6814}}$
+  \end{enumerate}
+\end{solution*}
+
+\begin{problem}
+\end{problem}
+\begin{solution*}It is given that\\
+  $\mu_G=134$\\
+  $\sigma_G=78$\\
+  $\mu_E=188$\\
+  $\sigma_E=46$\\
+  $\rho_{GE}=-0.5$
+  \begin{enumerate}[(a)]
+    \item The monthly mean for the total utility bill,
+      $$\mu_{G+E}=\mu_G+\mu_E=134+188=322$$
+    \item For the monthly standard deviation for the total utility bill,
+      $$
+        \sigma_{G+E}^2
+        =\sigma_G^2+\sigma_E^2+2\rho\sigma_G\sigma_E
+        =78^2+46^2+2(-0.5)(78\times 46)
+        =4612
+      $$
+      Therefore $\sigma_{G+E}\approx{67.91}$
+  \end{enumerate}
+\end{solution*}
+
+\begin{problem}
+\end{problem}
+\begin{solution*}A skewed continuous distribution is given with\\
+  $\mu=40$\\
+  $\sigma=40$\\
+  $n=64$
+  \begin{enumerate}[(a)]
+    \item Since the distribution is Normal, the mean 
+    of the sample mean is same as population mean. Therefore
+      $$\mu_{\bar{x}}=\mu=40$$
+    \item Similarly, the standard deviation of the sample mean 
+    is given by
+      $$\sigma_{\bar{x}}=\sigma/\sqrt{n}=40/\sqrt{64}=5$$
+    \item The Central Limit Theorem states that the \textbf{mean time between texts},
+    $\bar{x}$ follows the Normal distribution, $N(\mu_{\bar{x}}, \sigma_{\bar{x}})$ and is given by
+      $$N(40,5)$$
+      and the probability that the mean time for 64 independent pairs of consecutive text messages 
+      is more than 42 minutes is
+      \begin{align*}
+        &P(\bar{x}>42)\\
+        &=P(z>\frac{42-40}{40})\\
+        &=P(z>0.05) = 1-P(z\le{0.05})\\
+        &=1-pnorm(0.05)\approx\boxed{0.48}
+      \end{align*}
+  \end{enumerate}
+\end{solution*}
+
+\begin{problem}
+\end{problem}
+\begin{solution*}The following are given:\\
+  $n=25$\\
+  $\sigma=3$\\
+  $\mu_{\bar{x}}=5.43$\\
+  $\sigma_{\bar{x}}=2.98$
+  \begin{enumerate}[(a)]
+  \item To compute a $90\%$ two-sided confidence interval,
+    we first note that since the Normal Table evaluates probability
+    \textbf{up to} a certain statistic, let's call it $z^*$,
+    we need to ``add the tail'' to the probability before 
+    we look up $z^*$. In other words,
+    \begin{equation}
+      z^*=qnorm(.90+\frac{1-.90}{2})=qnorm(.95)\approx{1.6449}
+    \end{equation}
+    The required \textbf{margin of error} is given by
+    \begin{equation}
+      m=z^*\sigma/\sqrt{n}\approx 0.9869
+    \end{equation}
+    The $90\%$ two-sided confidence interval, therefore
+    \begin{align*}
+      CI
+      &=(\mu_{\bar{X}}-0.9869, \mu_{\bar{X}}+0.9869)\\
+      &=(5.43-0.9869, 5.43+0.9869)\\
+      &=\boxed{(4.4431, 6.4169)}
+    \end{align*}
+    
+    \item To find the smallest sample size needed so that the margin of
+    error, $m$, is no more than $0.5$ we use (2) above,
+    $$m = z^*\sigma/\sqrt{n} = 1.6449(3)/\sqrt{n}$$
+    For the desired inequality $m\le{0.5}$, we can say
+    \begin{align*}
+      \frac{1.6449(3)}{\sqrt{n}} &\le 0.5\\
+      \sqrt{n} &\ge 9.87\\
+      n &\ge 97.4
+    \end{align*}
+    We conclude that the sample size must be \textbf{at least 98}.
+\end{enumerate}
+
+\end{solution*}
+
+\begin{problem}
+\end{problem}
+\begin{solution*}The following are given:\\
+    $\mu_0=8$\\
+    $n=6$\\
+    $\bar{x} = mean(c(7.7, 7.4, 7.5, 7.9, 6.8, 7.9)) \approx 7.53$\\
+    $\sigma=0.5$\\
+    $\alpha=0.05$\\
+
+    The \textbf{null-hypothesis} is stated as $H_0:\mu=8$ and the \textbf{alternate hypothesis} is
+    $H_a:\mu\ne{8}$.\\
+
+    The \textbf{test statistic} we want to calculate is:
+    \begin{align*}
+        z&=\frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}\\
+        &=\frac{7.53-8}{0.5/\sqrt{6}}\\
+        &\approx -2.3025
+    \end{align*}
+    Looking up $-2.3025$ in the Normal table, we get $P(Z<z)=0.01065292$
+    however since this is a \textbf{two-sided} alternate (less than or greater than $\mu_0$),
+    we shall use $2\times P(Z<z)=0.02130584$.\\
+
+    This value is significantly smaller than significance-level, $\alpha=.05$.
+    Hence $H_0$ is to be \textbf{rejected}.
+\end{solution*}
+
+\end{document}
