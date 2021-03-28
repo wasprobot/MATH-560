@@ -63,7 +63,52 @@
   with \textbf{Degrees of freedom}, $df=(r-1)(c-1)=2$ comes out to be,
   $\chi^{2*}=4.605$.\\
 
+  \textbf{Conclusion:}
   Since $\chi^2>\chi^{2*}$ we \textbf{reject} the hypothesis $H_0$, that there 
   is no association between the coffee consumption \& gender of the students.
+\end{solution}
+
+\begin{problem}
+  Given\\
+
+  \begin{tabular}{|l|l|l|l|l|l|l|}
+    \hline
+    Outcome & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \hline
+    \# of occurances & $153$ & $184$ & $160$ & $175$ & $162$ & $166$ \\
+    \hline
+  \end{tabular}\\
+\end{problem}
+\begin{solution}
+  We are to perform a Goodness of Fit test at $\alpha=0.05$ that the 
+  die is fair.\\
+
+  \textbf{Hypothesis}: $H_0$: The outcome from this die follows a fair distribution (where
+  each outcome is $\frac{1}{6}$ likely) vs.
+  $H_a$: The die is not fair. \\
+
+  The \textbf{expected counts} for a fair die, when rolled $1000$ times would be $\approx 166.67$ \\
+
+  \textbf{The test statistic}, $\chi^2$
+  \begin{align*}
+    &=\sum{\frac{(\mathrm{observed\ count}-\mathrm{expected\ count})^2}{\mathrm{expected\ count}}}\\
+    &=\frac{1}{166.67} [
+      (153-166.67)^2 
+      +(184-166.67)^2
+      +(160-166.67)^2 \\
+      &+(175-166.67)^2 
+      +(162-166.67)^2  
+      +(166-166.67)^2 ]\\
+    & \approx 3.739926
+  \end{align*}
+
+  Looking up the \textit{$\chi^2$ distribution critical values} table, we see that
+  the \textbf{Critical value} at $\alpha=0.05$ and
+  with \textbf{Degrees of freedom}, $df=(k-1)=5$ comes out to be,
+  $\chi^{2*}=11.070$.\\
+
+  \textbf{Conclusion:}
+  Since $\chi^2<\chi^{2*}$ we \textbf{fail to reject} the hypothesis $H_0$, that this
+  is a fair die.
 \end{solution}
 \end{document}
