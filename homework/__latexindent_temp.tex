@@ -14,54 +14,22 @@
 \begin{document}
 
 \begin{problem}
-  Given:\\
+  A table of two-variables is given with:\\
   Sample ratio for the treatment group, $\hat{p_1}=\frac{82}{200745} \approx 0.0004085$\\
   Sample ratio for the control group, $\hat{p_2}=\frac{162}{201229} \approx 0.0008050$\\
   Pooled ratio, $\hat{p}=\frac{162+82}{200745+201229} \approx 0.0006070$
 \end{problem}
 \begin{solution}
-  Hypothesis: $H_0:p_1=p_2$ vs. $H_a:p_1\ne p_2$\\
+  Hypothesis:\\
+  $H_0$: There is no association between the row \& the column variables vs. \\
+  $H_a$: There is an association between them. \\
+
   Test statistic, 
   \begin{align*}
-    z&=\frac{\hat{p_1}-\hat{p_2}}{\sqrt{\hat{p}(1- \hat{p})(\frac{1}{n_1}+\frac{1}{n_2}})}\\
-    &=\frac{0.0004085-0.0008050}{\sqrt{0.0006070(1- 0.0006070)(\frac{1}{200745}+\frac{1}{201229}})}\\
-    &\approx -5.10328
+    \chi^2=\sum{\frac{(\mathrm{observed count}-\mathrm{expected count})^2}{\mathrm{expected count}}}
   \end{align*}
   The correspnding P-Value for the two-sided test
   $=2\times pnorm(-5.10328) \approx 0.0000003$, 
   which is considerably smaller  than $\alpha=0.5$ so we \textbf{reject the null-hypothesis}.
 \end{solution}
-
-\begin{problem}A red six-sided die is rolled $100$ times and a six comes up $15$ times. 
-  A blue six-sided die is rolled $500$ times and a six comes up $100$ times. 
-  Let $p_1$ be the probability that the red die comes up as a six, and let $p_2$ 
-  be the probability that the blue die comes up as a six. Compute a two-sided $95\%$ 
-  confidence interval for $p_1-p_2$ based on the Normal approximation.
-\end{problem}
-\begin{solution}Given:\\
-  $\hat{p_1}=\frac{15}{100}=0.15$\\
-  $\hat{p_2}=\frac{100}{500}=0.20$\\
-  $D=\hat{p_1}-\hat{p_2}=-0.05$\\
-  Standard error for D,
-  \begin{align*}
-    \sigma_{\hat{p_1}-\hat{p_2}}
-      &=\sqrt{\frac{\hat{p_1}(1-\hat{p_1})}{n_1} + \frac{\hat{p_2}(1-\hat{p_2})}{n_2}}\\
-      &=\sqrt{\frac{0.15(1-0.15)}{100} + \frac{0.20(1-0.20)}{500}}\\
-      &=0.03993745
-  \end{align*}
-  % According to Normal approximation, 
-  % $$\hat{p} \approx N(p, \sqrt{\frac{p(1-p)}{n}})$$
-  We know that for the two-sided $95\%$ confidence interval, 
-  $z^*=1.959964$\\
-  Therefore the margin of error 
-  \begin{align*}
-    &=z^* \times \sigma_{\hat{p_1}-\hat{p_2}}\\
-    &=0.07827596\\
-  \end{align*}
-  So a $95\%$ confidence interval for $p_1-p_2$
-  is $(-0.12827596, 0.02827596)$
-\end{solution}
-
-\begin{problem}
-  \end{problem}
 \end{document}
