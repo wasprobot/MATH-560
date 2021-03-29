@@ -28,7 +28,6 @@
     \hline
   \end{tabular}\\
 \end{problem}
-
 \begin{solution}
   The expected cell counts are as follows:\\
 
@@ -111,4 +110,72 @@
   Since $\chi^2<\chi^{2*}$ we \textbf{fail to reject} the hypothesis $H_0$, that this
   is a fair die.
 \end{solution}
+
+\begin{problem}Given:\\
+  $n=500$\\
+  Mean height of the fathers, $\bar{x}=67.9$\\
+  Standard deviation of the height of fathers, $s_x=2.75$\\
+  Mean height of the sons, $\bar{y}=68.7$\\
+  Standard deviation of the height of sons, $s_y=2.83$
+\end{problem}
+\begin{solution}
+  (a) The correlation between the heights of the sons and their fathers in the sample was $r=0.5$.
+    The equation of the least-squares regression line for predicting the height of a son ($y$) from this 
+    population based on his father’s height ($x$) is given by
+    $$\hat{y}=b_0+b_1x$$
+    where $b_1=r(s_y/s_x) = 0.5(\frac{2.83}{2.75}) \approx 0.5145$ \\
+    and $b_0=\bar{y}-b_1\bar{x} = 68.7-0.5145(67.9) \approx 33.7654$\\
+    
+    Therefore the equation of the least squares regression line is
+    \begin{equation}
+      \hat{y}=33.7654+0.5145x
+    \end{equation}
+    
+  (b) Suppose instead that the correlation was $1$. In this case the equation of the least-squares
+    regression line for predicting the height of a son from this population based on his father’s height
+    will use $b_1=s_y/s_x = \frac{2.83}{2.75} \approx 1.0291$ \\
+    and $b_0=\bar{y}-b_1\bar{x} = 68.7-1.0291(67.9) \approx -1.1759$\\
+    
+    Therefore the equation of the least squares regression line will be
+    \begin{equation}
+      \hat{y} = -1.1759 + 1.0291x
+    \end{equation}
+    
+  (c) If, instead, the correlation was $0$. $b_1=0(s_y/s_x) = 0$ \\
+    and $b_0=\bar{y}-b_1\bar{x} = 68.7-0 = 68.7$\\
+
+    This time, the equation of the least squares regression line will be
+    \begin{equation}
+      \hat{y} = 68.7
+    \end{equation}
+
+  (d) Predicting the height of a son from this population whose father is 6 feet 6 inches tall ($x=78$)
+  based on the regression line obtained in (3.1) will be
+  $$\hat{y} = 33.7654+0.5145(78) = 73.8964$$
+  Or approximately 6 feet 2 inches.\\
+  
+  (e) If r was equal to $1$, using (3.2),
+  $$\hat{y}(x=78) = -1.1759 + 1.0291(78) \approx 79.0939$$
+  Or approximately 6 feet 7 inches.\\
+  
+  (f) And finally, if r was equal to $0$, using (3.3),
+  $$\hat{y}(x=78) = 68.7$$
+  Or approximately 5 feet 9 inches.
+\end{solution}
+
+\pagebreak
+
+\section*{Project details}
+\subsection*{Introduction}
+According to the World Health Organization (WHO) stroke is the 2nd leading cause of death globally, 
+responsible for approximately 11\% of total deaths. This dataset is used to predict whether a patient
+is likely to get stroke based on the input parameters like gender, age, various diseases, and smoking 
+status. We can use this dataset to state hypotheses of correlation between various explanatory
+variables (like, age, bmi, marital status, residence type, etc.) and the result that they have had
+a stroke.\\
+The sataset used here can be found 
+\href{https://www.kaggle.com/fedesoriano/stroke-prediction-dataset?select=healthcare-dataset-stroke-data.csv}
+{click: on Kaggle} and contains $5110$ records and $12$ variables.
+
+
 \end{document}
