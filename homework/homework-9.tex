@@ -1,6 +1,9 @@
 \documentclass[boxes, qed]{homework}
 \usepackage{xcolor,amsmath,listings}
 \usepackage{graphicx}
+\usepackage[backend=biber, style=mla, citestyle=authoryear]{biblatex}
+
+\addbibresource{homework-9.bib}
 \graphicspath{ {./images/} }
 
 \name{Rohit Wason}
@@ -173,9 +176,40 @@ is likely to get stroke based on the input parameters like gender, age, various 
 status. We can use this dataset to state hypotheses of correlation between various explanatory
 variables (like, age, bmi, marital status, residence type, etc.) and the result that they have had
 a stroke.\\
-The sataset used here can be found 
-\href{https://www.kaggle.com/fedesoriano/stroke-prediction-dataset?select=healthcare-dataset-stroke-data.csv}
-{click: on Kaggle} and contains $5110$ records and $12$ variables.
+The dataset used here can be found on Kaggle, a public competetion forum
+where data scientists and novices collaborate to find answers in complex datasets
+(\cite{kaggle}). This dataset contains $5110$ data points with $12$ variables:
+\begin{enumerate}
+  \item \textbf{id:} unique identifier
+  \item \textbf{gender:} "Male", "Female" or "Other"
+  \item \textbf{age:} age of the patient
+  \item \textbf{hypertension:} 0 if the patient doesn't have hypertension, 1 if the patient has hypertension
+  \item \textbf{heart\_disease:} 0 if the patient doesn't have any heart diseases, 1 if the patient has a heart disease
+  \item \textbf{ever\_married:} ``No'' or ``Yes''
+  \item \textbf{work\_type:} ``children'', ``Govt\_jov'', ``Never\_worked'', ``Private'' or ``Self-employed''
+  \item \textbf{Residence\_type:} "Rural" or "Urban"
+  \item \textbf{avg\_glucose\_level:} average glucose level in blood
+  \item \textbf{bmi:} body mass index
+  \item \textbf{smoking\_status:} "formerly smoked", "never smoked", "smokes" or "Unknown"*
+  \item \textbf{stroke:} 1 if the patient had a stroke or 0 if not
+\end{enumerate}
 
+\subsection*{Methods}
+According to stroke.org, a non-profit organization dedicated to public awareness about,
+and prevention of common causes of stroke, smoking, lack of physical activity, diabetes and 
+obesity are leading factors that could lead to stroke (\cite{strokeorg}).\\
+In particular the following questions are of interest:
+\begin{enumerate}
+  \item \textbf{Is there a strong correlation between stroke and other conditions, 
+  like heart disease, or hypertension?}\\
+  A histogram of whether heart-disease is present in a data point:\\
+  \includegraphics[scale=.5]{stroke-heart}
+
+  \item \textbf{Does BMI indicate the occurence of stroke?}\\
+  \includegraphics[scale=.5]{stroke-bmi}
+\end{enumerate}
+
+\pagebreak
+\printbibliography
 
 \end{document}
